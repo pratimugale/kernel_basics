@@ -7,3 +7,5 @@
    sudo mokutil --disable-validation
    ```
    It will require to create a password. The password should be at least 8 characters long. After you reboot, UEFI will ask if you want to change security settings. Choose "Yes".
+   https://sourceware.org/systemtap/wiki/SecureBoot
+   https://askubuntu.com/questions/762254/why-do-i-get-required-key-not-available-when-install-3rd-party-kernel-modules
