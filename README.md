@@ -1,11 +1,11 @@
 # kernel_basics
 
-##Running Module
+## Running Module
 1. `make` to compile using Makefile
 2. `sudo insmod 'module-name'.ko` to install the module
 3. `dmesg` to display message
 
-##ERRORS
+## ERRORS
 
 1. Required key not available: Solution: disable Secure Boot in UEFI (BIOS) settings.
    Since Ubuntu kernel build 4.4.0-21.37 this can be fixed by running
