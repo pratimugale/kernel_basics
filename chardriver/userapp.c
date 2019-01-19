@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <fcntl.h>
 
+#include <sys/ioctl.h>
+#define PRINTCODE _IOW(241, 0, char*)
+
 #define DEVICE "/dev/pratimdevice"
 
 int main(){
@@ -12,6 +15,8 @@ int main(){
     printf("File does not exist");
     exit(-1);
   }
+
+  //ioctl(fd, PRINTCODE, "hi this is pratim ioctl");
 
   // writing to device
 

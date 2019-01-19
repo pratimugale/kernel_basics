@@ -16,7 +16,7 @@
 #include <linux/fs.h>
 #include <linux/uaccess.h>
 
-#define DEVICE_NAME "pratimdevice"
+#define DEVICE_NAME "pratimdevice1"
 
 //create a structure for our fake device
 
@@ -28,7 +28,7 @@ struct fake_device{
 struct cdev *mycdev;
 
 
-static dev_t first;
+static dev_t second;
 
 // writing the file operations functions
 
@@ -78,11 +78,11 @@ struct file_operations fops = {
 
 static int __init mychar_init(void){
   printk(KERN_ALERT "Start by Registering \n");
-  if(alloc_chrdev_region(&first, 0, 1, "Pratim") < 0){
+  if(alloc_chrdev_region(&second, 0, 1, "Pratim") < 0){
     printk(KERN_ALERT "Registration FAILED \n");
     return -1;
   }
-  printk(KERN_INFO "<MAJOR, MINOR> : <%d, %d> \n", MAJOR(first), MINOR(first) );
+  printk(KERN_INFO "<MAJOR, MINOR> : <%d, %d> \n", MAJOR(second), MINOR(second) );
   //printk(KERN_INFO "\t use ", MAJOR(first), MINOR(first) );
 
   // Now creating the cdev structure
@@ -93,7 +93,7 @@ static int __init mychar_init(void){
   // We created cdev, now assign it to the kernel
   // cdev_add(mycdev, dev_num, 1)
 
-  if(cdev_add(mycdev, first, 1) < 0){
+  if(cdev_add(mycdev, second, 1) < 0){
     // Always check for errors
     printk(KERN_ALERT "unable to add cdev to kernel \n");
     return -1;
@@ -105,7 +105,7 @@ static int __init mychar_init(void){
 static void __exit mychar_exit(void){
   cdev_del(mycdev);
 
-  unregister_chrdev_region(first, 1);
+  unregister_chrdev_region(second, 1);
   printk(KERN_ALERT "Device Unregistered \n");
 }
 module_init(mychar_init);
