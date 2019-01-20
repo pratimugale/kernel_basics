@@ -24,4 +24,4 @@
    Solution: adding '\n' to the printed text on the display function
   
 3. Could not open device file: This is because the file was created in superuser mode while using the mknod command.
-   Refer to https://github.com/pratimugale/kernel_basics/issues?q=is%3Aclosed . 
+   Refer to https://github.com/pratimugale/kernel_basics/issues/1. 
