@@ -5,6 +5,33 @@
 2. `sudo insmod 'module-name'.ko` to install the module
 3. `dmesg` to display message
 
+## Using the ARM Cross Compiler 
+1. Install the arm-linux-gnueabi-gcc compiler
+    ```
+    sudo apt-get install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi
+    ```
+2. Install qemu-arm-static
+   ```
+    sudo apt-get install qemu binfmt-support qemu-user-static
+   ```
+3. Make the binary file:
+    ```
+    make CC=arm-linux-gnueabi-gcc
+    ```
+    The Makefile can be found here:
+    https://github.com/jadonk/gsoc-application
+
+4. Execute the binary using QEMU emulator:
+     ```
+     qemu-arm-static ./helloworld.bin
+     ```
+
+
+5. To compile a normal C program:
+   ```
+    arm-linux-gnueabi-gcc helloworld.c
+   ```
+
 ## ERRORS
 
 1. Required key not available: Solution: disable Secure Boot in UEFI (BIOS) settings.

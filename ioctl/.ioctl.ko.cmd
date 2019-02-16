@@ -1,0 +1,1 @@
+cmd_/home/pratim/work/kernel_basics/ioctl/ioctl.ko := ld -r -m elf_x86_64 -z max-page-size=0x200000 -T ./scripts/module-common.lds --build-id  -o /home/pratim/work/kernel_basics/ioctl/ioctl.ko /home/pratim/work/kernel_basics/ioctl/ioctl.o /home/pratim/work/kernel_basics/ioctl/ioctl.mod.o ;  true
