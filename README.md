@@ -1,6 +1,6 @@
 # kernel_basics
 
-## ERRORS
+## COMMON ERRORS
 
 1. Required key not available: Solution: disable Secure Boot in UEFI (BIOS) settings.
    Since Ubuntu kernel build 4.4.0-21.37 this can be fixed by running
@@ -8,6 +8,18 @@
    sudo apt install mokutil
    sudo mokutil --disable-validation
    ```
+It will require to create a password. The password should be at least 8 characters long. After you reboot, UEFI will ask if you want to change security settings. Choose "Yes".
+   
+   Help :-
+   https://sourceware.org/systemtap/wiki/SecureBoot
+   
+   https://askubuntu.com/questions/762254/why-do-i-get-required-key-not-available-when-install-3rd-party-kernel-modules
+
+2. printk() not displaying message: 
+   Solution: adding '\n' to the printed text on the display function
+  
+3. Could not open device file: This is because the file was created in superuser mode while using the mknod command.
+   Refer to https://github.com/pratimugale/kernel_basics/issues/1. 
 
 ## Running Module
 1. `make` to compile using Makefile
@@ -35,20 +47,8 @@
      qemu-arm-static ./helloworld.bin
      ```
 
-
 5. To compile a normal C program:
    ```
     arm-linux-gnueabi-gcc helloworld.c
    ```
-   It will require to create a password. The password should be at least 8 characters long. After you reboot, UEFI will ask if you want to change security settings. Choose "Yes".
    
-   Help :-
-   https://sourceware.org/systemtap/wiki/SecureBoot
-   
-   https://askubuntu.com/questions/762254/why-do-i-get-required-key-not-available-when-install-3rd-party-kernel-modules
-
-2. printk() not displaying message: 
-   Solution: adding '\n' to the printed text on the display function
-  
-3. Could not open device file: This is because the file was created in superuser mode while using the mknod command.
-   Refer to https://github.com/pratimugale/kernel_basics/issues/1. 
